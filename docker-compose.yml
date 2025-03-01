@@ -1,0 +1,19 @@
+services:
+  test-bank-db:
+    image: postgres:15-alpine
+    container_name: postgres-db
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - "${DB_PORT}:5432"
+    networks:
+      - bank-overall
+    volumes:
+      - db-data:/var/lib/postgresql/data
+volumes:
+    db-data:
+networks:
+  bank-overall:
+    driver: bridge
