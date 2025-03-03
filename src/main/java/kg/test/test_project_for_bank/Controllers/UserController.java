@@ -23,10 +23,10 @@ import java.util.List;
 @RequestMapping ("api/v1/users")
 @Tag(name = "User Controller", description = "This controller manages actions with users")
 public class UserController {
-    private final UserService userService;
+    private final UserService<User> userService;
     private final UserMapper userMapper;
 
-    public UserController(UserService userService, UserMapper userMapper) {
+    public UserController(UserService<User> userService, UserMapper userMapper) {
         this.userService = userService;
         this.userMapper = userMapper;
     }

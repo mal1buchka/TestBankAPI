@@ -22,13 +22,13 @@ import java.util.UUID;
 
 @Service
 @Slf4j
-public class AccountServiceImpl implements AccountService {
+public class AccountServiceImpl implements AccountService<Account> {
 
 
     private final AccountRepository accountRepository;
-    private final UserService userService;
+    private final UserService<User> userService;
 
-    public AccountServiceImpl(AccountRepository accountRepository, UserService userService) {
+    public AccountServiceImpl(AccountRepository accountRepository, UserService<User> userService) {
         this.accountRepository = accountRepository;
         this.userService = userService;
     }

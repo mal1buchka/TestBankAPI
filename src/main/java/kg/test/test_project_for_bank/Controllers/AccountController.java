@@ -24,11 +24,11 @@ import java.util.List;
 @RequestMapping ("/api/v1/accounts")
 @Tag(name = "Account controller", description = "This controller manages actions with user accounts")
 public class AccountController {
-    private final AccountService accountService;
+    private final AccountService<Account> accountService;
     private final AccountMapper accountMapper;
 
 
-    public AccountController(AccountService accountService, AccountMapper accountMapper) {
+    public AccountController(AccountService<Account> accountService, AccountMapper accountMapper) {
         this.accountService = accountService;
         this.accountMapper = accountMapper;
     }

@@ -31,7 +31,7 @@ public class AccountServiceImplTest {
     private AccountRepository accountRepository;
 
     @Mock
-    private UserService userService;
+    private UserService<User> userService;
 
     @InjectMocks
     private AccountServiceImpl accountService;

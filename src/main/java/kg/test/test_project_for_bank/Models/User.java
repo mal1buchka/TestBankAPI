@@ -1,17 +1,13 @@
 package kg.test.test_project_for_bank.Models;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
-import org.hibernate.Hibernate;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.NaturalId;
-
-import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
-import java.util.*;
+
 
 @Entity
 @Getter
