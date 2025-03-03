@@ -1,6 +1,11 @@
 package kg.test.test_project_for_bank.Controllers;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Min;
 import kg.test.test_project_for_bank.DTOs.UserDTO;
 import kg.test.test_project_for_bank.Mappers.UserMapper;
 import kg.test.test_project_for_bank.Models.User;
@@ -16,6 +21,7 @@ import java.util.List;
 @Validated
 @RestController
 @RequestMapping ("api/v1/users")
+@Tag(name = "User Controller", description = "This controller manages actions with users")
 public class UserController {
     private final UserService userService;
     private final UserMapper userMapper;
@@ -24,7 +30,12 @@ public class UserController {
         this.userService = userService;
         this.userMapper = userMapper;
     }
-
+    @ApiResponses (value = {
+            @ApiResponse (responseCode = "201", description = "User created successfully"),
+            @ApiResponse (responseCode = "400", description = "Invalid request data"),
+            @ApiResponse(responseCode = "500", description = "Internal server error")
+    })
+    @Operation(summary = "Create User", description = "Controller for creating user")
     @PostMapping("/create-user")
     ResponseEntity<UserCreateResponse> createUser(@RequestBody @Valid CreateUserRequest request) {
         User createdUser = userService.createUser(request);
@@ -33,22 +44,30 @@ public class UserController {
                 .user(userDTO)
                 .message("User has created successfully").build());
     }
+
+    @ApiResponses (value = {
+            @ApiResponse(responseCode = "201", description = "Fetching 1 user successfully"),
+            @ApiResponse (responseCode = "400", description = "Invalid user id or request data"),
+            @ApiResponse(responseCode = "500", description = "Internal server error")
+    })
+    @Operation(summary = "Get User by ID", description = "Controller for fetching one user from DB")
     @GetMapping("/{userId}")
-    ResponseEntity<UserDTO> getUserById(@PathVariable long userId) {
+    ResponseEntity<UserDTO> getUserById(@PathVariable @Min(value = 1, message = "User id must be a positive number")Long userId) {
         User user = userService.getUserById(userId);
         UserDTO userDTO = userMapper.toUserDTO(user);
         return ResponseEntity.status(200).body(userDTO);
     }
+
+    @ApiResponses (value = {
+            @ApiResponse(responseCode = "201", description = "Fetching all users successfully"),
+            @ApiResponse(responseCode = "500", description = "Internal server error")
+    })
+    @Operation(summary = "Get all Users", description = "Controller for fetching all the users from DB")
     @GetMapping
     ResponseEntity<List<UserDTO>> getAllUsers() {
         List<User> users = userService.getAllUsers();
         List<UserDTO> userDTOList = userMapper.toUserDTOs(users);
         return ResponseEntity.status(200).body(userDTOList);
-    }
-    @GetMapping("/all-info")
-    ResponseEntity<List<User>> getAllInfoAboutUsers() {
-        List<User> users = userService.getAllUsers();
-        return ResponseEntity.status(200).body(users);
     }
 }
 

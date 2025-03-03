@@ -22,7 +22,7 @@ import java.util.*;
 @Table(name = "users")
 public class User {
     @Id
-    @Column(name = "user_id", updatable = false, insertable = false)
+    @Column(name = "user_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -40,21 +40,4 @@ public class User {
     @Column (name = "user_date_of_registration", updatable = false)
     private ZonedDateTime dateOfRegistration;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @MapKey(name = "id")
-    private Map<Long, Account> accounts = new LinkedHashMap<>();
-
-    @Override
-    public final boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != Hibernate.getClass(o)) return false;
-
-        User user = (User) o;
-        return Objects.equals(id, user.id);
-    }
-
-    @Override
-    public final int hashCode() {
-        return Objects.hash(id);
-    }
 }

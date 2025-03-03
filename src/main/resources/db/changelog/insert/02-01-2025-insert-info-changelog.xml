@@ -1,0 +1,530 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet author="malibuchka (generated)" id="1740911468565-2">
+        <insert tableName="users">
+            <column name="user_id" valueNumeric="1"/>
+            <column name="user_name" value="malik"/>
+            <column name="user_email" value="malikkadyraliev447@gmail.com"/>
+            <column name="user_date_of_registration" valueDate="2025-03-02T09:52:40.504807"/>
+        </insert>
+        <insert tableName="users">
+            <column name="user_id" valueNumeric="2"/>
+            <column name="user_name" value="Aziz"/>
+            <column name="user_email" value="Aziz1997@gmail.com"/>
+            <column name="user_date_of_registration" valueDate="2025-03-02T09:52:58.948036"/>
+        </insert>
+        <insert tableName="users">
+            <column name="user_id" valueNumeric="3"/>
+            <column name="user_name" value="Max"/>
+            <column name="user_email" value="MaxVilodo@gmail.com"/>
+            <column name="user_date_of_registration" valueDate="2025-03-02T09:53:37.178926"/>
+        </insert>
+        <insert tableName="users">
+            <column name="user_id" valueNumeric="4"/>
+            <column name="user_name" value="Алексей"/>
+            <column name="user_email" value="alexey.petrov@gmail.com"/>
+            <column name="user_date_of_registration" valueDate="2025-03-02T09:54:59.427101"/>
+        </insert>
+        <insert tableName="users">
+            <column name="user_id" valueNumeric="5"/>
+            <column name="user_name" value="Малик"/>
+            <column name="user_email" value="malikkadyraliev448@gmail.com"/>
+            <column name="user_date_of_registration" valueDate="2025-03-02T10:01:54.962249"/>
+        </insert>
+        <insert tableName="users">
+            <column name="user_id" valueNumeric="6"/>
+            <column name="user_name" value="Малик"/>
+            <column name="user_email" value="malikkadyraliev332@gmail.com"/>
+            <column name="user_date_of_registration" valueDate="2025-03-02T10:01:59.413571"/>
+        </insert>
+        <insert tableName="users">
+            <column name="user_id" valueNumeric="7"/>
+            <column name="user_name" value="Дмитрий"/>
+            <column name="user_email" value="dmitriyKuznet@gmail.com"/>
+            <column name="user_date_of_registration" valueDate="2025-03-02T10:02:33.387535"/>
+        </insert>
+        <insert tableName="users">
+            <column name="user_id" valueNumeric="8"/>
+            <column name="user_name" value="Сергей"/>
+            <column name="user_email" value="SergeiPovidlo@icloud.com"/>
+            <column name="user_date_of_registration" valueDate="2025-03-02T10:03:19.680946"/>
+        </insert>
+        <insert tableName="users">
+            <column name="user_id" valueNumeric="9"/>
+            <column name="user_name" value="Ekaterina"/>
+            <column name="user_email" value="EkaterinaFrlovo@icloud.com"/>
+            <column name="user_date_of_registration" valueDate="2025-03-02T10:03:37.634082"/>
+        </insert>
+        <insert tableName="users">
+            <column name="user_id" valueNumeric="10"/>
+            <column name="user_name" value="Egor"/>
+            <column name="user_email" value="EgorPozdnyakov@icloud.com"/>
+            <column name="user_date_of_registration" valueDate="2025-03-02T10:03:50.45836"/>
+        </insert>
+        <insert tableName="users">
+            <column name="user_id" valueNumeric="11"/>
+            <column name="user_name" value="Адеми"/>
+            <column name="user_email" value="Ademi2002@icloud.com"/>
+            <column name="user_date_of_registration" valueDate="2025-03-02T10:04:07.295887"/>
+        </insert>
+        <insert tableName="users">
+            <column name="user_id" valueNumeric="12"/>
+            <column name="user_name" value="Makzud"/>
+            <column name="user_email" value="Makzud1999@icloud.com"/>
+            <column name="user_date_of_registration" valueDate="2025-03-02T10:04:26.692664"/>
+        </insert>
+        <insert tableName="users">
+            <column name="user_id" valueNumeric="13"/>
+            <column name="user_name" value="Zarina"/>
+            <column name="user_email" value="Zarina.Keneshbaeva@bk.ru"/>
+            <column name="user_date_of_registration" valueDate="2025-03-02T10:04:50.191005"/>
+        </insert>
+        <insert tableName="users">
+            <column name="user_id" valueNumeric="14"/>
+            <column name="user_name" value="Alinur"/>
+            <column name="user_email" value="AlinurTashtanbekov2005@bk.ru"/>
+            <column name="user_date_of_registration" valueDate="2025-03-02T10:05:10.341546"/>
+        </insert>
+        <insert tableName="users">
+            <column name="user_id" valueNumeric="15"/>
+            <column name="user_name" value="Boris"/>
+            <column name="user_email" value="Boris1929@yandex.ru"/>
+            <column name="user_date_of_registration" valueDate="2025-03-02T10:05:34.64346"/>
+        </insert>
+        <insert tableName="users">
+            <column name="user_id" valueNumeric="16"/>
+            <column name="user_name" value="UmaTurman"/>
+            <column name="user_email" value="UmpaZalumpa@yandex.ru"/>
+            <column name="user_date_of_registration" valueDate="2025-03-02T10:05:52.010045"/>
+        </insert>
+        <insert tableName="users">
+            <column name="user_id" valueNumeric="17"/>
+            <column name="user_name" value="Kirill"/>
+            <column name="user_email" value="KirillKhramushin@yandex.ru"/>
+            <column name="user_date_of_registration" valueDate="2025-03-02T10:06:24.421642"/>
+        </insert>
+        <insert tableName="users">
+            <column name="user_id" valueNumeric="18"/>
+            <column name="user_name" value="Oomat"/>
+            <column name="user_email" value="Oomat1999@yandex.ru"/>
+            <column name="user_date_of_registration" valueDate="2025-03-02T10:06:39.939721"/>
+        </insert>
+        <insert tableName="users">
+            <column name="user_id" valueNumeric="19"/>
+            <column name="user_name" value="Oomat"/>
+            <column name="user_email" value="Oomat1998@yandex.ru"/>
+            <column name="user_date_of_registration" valueDate="2025-03-02T10:06:46.778579"/>
+        </insert>
+        <insert tableName="users">
+            <column name="user_id" valueNumeric="20"/>
+            <column name="user_name" value="Omat"/>
+            <column name="user_email" value="Oomat1997@yandex.ru"/>
+            <column name="user_date_of_registration" valueDate="2025-03-02T10:06:56.689665"/>
+        </insert>
+        <insert tableName="users">
+            <column name="user_id" valueNumeric="21"/>
+            <column name="user_name" value="Bakyt"/>
+            <column name="user_email" value="Bake1975@gmail.com"/>
+            <column name="user_date_of_registration" valueDate="2025-03-02T10:07:22.543597"/>
+        </insert>
+        <insert tableName="users">
+            <column name="user_id" valueNumeric="22"/>
+            <column name="user_name" value="Salomon"/>
+            <column name="user_email" value="SalomonRodin975@gmail.com"/>
+            <column name="user_date_of_registration" valueDate="2025-03-02T10:07:39.988996"/>
+        </insert>
+        <insert tableName="users">
+            <column name="user_id" valueNumeric="23"/>
+            <column name="user_name" value="Aruuke"/>
+            <column name="user_email" value="Aruusha1@gmail.com"/>
+            <column name="user_date_of_registration" valueDate="2025-03-02T10:07:53.508977"/>
+        </insert>
+        <insert tableName="users">
+            <column name="user_id" valueNumeric="24"/>
+            <column name="user_name" value="Viktoriya"/>
+            <column name="user_email" value="Vikusya201@gmail.com"/>
+            <column name="user_date_of_registration" valueDate="2025-03-02T10:08:09.469492"/>
+        </insert>
+        <insert tableName="users">
+            <column name="user_id" valueNumeric="25"/>
+            <column name="user_name" value="Dong"/>
+            <column name="user_email" value="DongChina@gmail.com"/>
+            <column name="user_date_of_registration" valueDate="2025-03-02T10:08:26.914002"/>
+        </insert>
+        <insert tableName="users">
+            <column name="user_id" valueNumeric="26"/>
+            <column name="user_name" value="Dong"/>
+            <column name="user_email" value="DongChina2@gmail.com"/>
+            <column name="user_date_of_registration" valueDate="2025-03-02T10:08:36.036158"/>
+        </insert>
+        <insert tableName="users">
+            <column name="user_id" valueNumeric="27"/>
+            <column name="user_name" value="Selectin"/>
+            <column name="user_email" value="Selectin@icloud.com"/>
+            <column name="user_date_of_registration" valueDate="2025-03-02T10:09:02.858907"/>
+        </insert>
+        <insert tableName="users">
+            <column name="user_id" valueNumeric="28"/>
+            <column name="user_name" value="Chester"/>
+            <column name="user_email" value="Chester1938@icloud.com"/>
+            <column name="user_date_of_registration" valueDate="2025-03-02T10:09:16.858737"/>
+        </insert>
+        <insert tableName="users">
+            <column name="user_id" valueNumeric="29"/>
+            <column name="user_name" value="Beksultan"/>
+            <column name="user_email" value="BeksultanA@yandex.ru"/>
+            <column name="user_date_of_registration" valueDate="2025-03-02T10:09:43.736575"/>
+        </insert>
+        <insert tableName="users">
+            <column name="user_id" valueNumeric="30"/>
+            <column name="user_name" value="Stepan"/>
+            <column name="user_email" value="Stepan1997@yandex.ru"/>
+            <column name="user_date_of_registration" valueDate="2025-03-02T10:09:58.165035"/>
+        </insert>
+        <insert tableName="users">
+            <column name="user_id" valueNumeric="31"/>
+            <column name="user_name" value="Kolya"/>
+            <column name="user_email" value="KolyaKolesnikov@yandex.ru"/>
+            <column name="user_date_of_registration" valueDate="2025-03-02T10:10:12.692183"/>
+        </insert>
+        <insert tableName="users">
+            <column name="user_id" valueNumeric="32"/>
+            <column name="user_name" value="Kolya"/>
+            <column name="user_email" value="KolyaKolesnikov1@yandex.ru"/>
+            <column name="user_date_of_registration" valueDate="2025-03-02T10:10:21.385017"/>
+        </insert>
+        <insert tableName="users">
+            <column name="user_id" valueNumeric="33"/>
+            <column name="user_name" value="Lira"/>
+            <column name="user_email" value="Liroha2002@gmail.com"/>
+            <column name="user_date_of_registration" valueDate="2025-03-02T10:10:44.814614"/>
+        </insert>
+        <insert tableName="users">
+            <column name="user_id" valueNumeric="34"/>
+            <column name="user_name" value="Azamat"/>
+            <column name="user_email" value="Azamat_Manasov@gmail.com"/>
+            <column name="user_date_of_registration" valueDate="2025-03-02T10:12:08.317437"/>
+        </insert>
+        <insert tableName="users">
+            <column name="user_id" valueNumeric="35"/>
+            <column name="user_name" value="GigaChad"/>
+            <column name="user_email" value="GigaChadovich@gmail.com"/>
+            <column name="user_date_of_registration" valueDate="2025-03-02T10:12:23.058586"/>
+        </insert>
+    </changeSet>
+    <changeSet author="malibuchka (generated)" id="1740911468565-1">
+        <insert tableName="user_accounts">
+            <column name="user_account_id" valueNumeric="1"/>
+            <column name="account_number" value="4c3f5971-888f-46aa-a8ed-85d792a8c380"/>
+            <column name="account_balance" valueNumeric="12133.70"/>
+            <column name="user_id" valueNumeric="1"/>
+        </insert>
+        <insert tableName="user_accounts">
+            <column name="user_account_id" valueNumeric="16"/>
+            <column name="account_number" value="51d1cdfc-3685-492a-806a-e9018d1f45dc"/>
+            <column name="account_balance" valueNumeric="0.00"/>
+            <column name="user_id" valueNumeric="10"/>
+        </insert>
+        <insert tableName="user_accounts">
+            <column name="user_account_id" valueNumeric="18"/>
+            <column name="account_number" value="add69987-ed0e-4df4-8137-f810434fc187"/>
+            <column name="account_balance" valueNumeric="0.00"/>
+            <column name="user_id" valueNumeric="13"/>
+        </insert>
+        <insert tableName="user_accounts">
+            <column name="user_account_id" valueNumeric="28"/>
+            <column name="account_number" value="81cf83fd-4334-4938-bca4-494bfe6b8c04"/>
+            <column name="account_balance" valueNumeric="0.00"/>
+            <column name="user_id" valueNumeric="24"/>
+        </insert>
+        <insert tableName="user_accounts">
+            <column name="user_account_id" valueNumeric="30"/>
+            <column name="account_number" value="b2daff9a-1282-4475-918d-00ae837d2a04"/>
+            <column name="account_balance" valueNumeric="0.00"/>
+            <column name="user_id" valueNumeric="24"/>
+        </insert>
+        <insert tableName="user_accounts">
+            <column name="user_account_id" valueNumeric="34"/>
+            <column name="account_number" value="47c2d4a0-4448-484f-a6ec-be768a6962b6"/>
+            <column name="account_balance" valueNumeric="0.00"/>
+            <column name="user_id" valueNumeric="29"/>
+        </insert>
+        <insert tableName="user_accounts">
+            <column name="user_account_id" valueNumeric="38"/>
+            <column name="account_number" value="f78d1acf-1b47-411b-9a28-7605a9e592be"/>
+            <column name="account_balance" valueNumeric="0.00"/>
+            <column name="user_id" valueNumeric="33"/>
+        </insert>
+        <insert tableName="user_accounts">
+            <column name="user_account_id" valueNumeric="40"/>
+            <column name="account_number" value="f54607ac-3101-45dc-80c7-333df7d91edd"/>
+            <column name="account_balance" valueNumeric="0.00"/>
+            <column name="user_id" valueNumeric="35"/>
+        </insert>
+        <insert tableName="user_accounts">
+            <column name="user_account_id" valueNumeric="2"/>
+            <column name="account_number" value="e9493382-29ff-4ff7-8ff0-84a16a619778"/>
+            <column name="account_balance" valueNumeric="134.00"/>
+            <column name="user_id" valueNumeric="1"/>
+        </insert>
+        <insert tableName="user_accounts">
+            <column name="user_account_id" valueNumeric="3"/>
+            <column name="account_number" value="5f26eb72-ea74-4fb8-8863-6bb12c74ebaf"/>
+            <column name="account_balance" valueNumeric="2.00"/>
+            <column name="user_id" valueNumeric="1"/>
+        </insert>
+        <insert tableName="user_accounts">
+            <column name="user_account_id" valueNumeric="4"/>
+            <column name="account_number" value="dbf35b02-7b71-4b2c-9cb5-3b1ff06451ed"/>
+            <column name="account_balance" valueNumeric="14599.00"/>
+            <column name="user_id" valueNumeric="2"/>
+        </insert>
+        <insert tableName="user_accounts">
+            <column name="user_account_id" valueNumeric="5"/>
+            <column name="account_number" value="1c204fb4-1639-4551-8480-5bb3d4db4ad2"/>
+            <column name="account_balance" valueNumeric="999999.00"/>
+            <column name="user_id" valueNumeric="2"/>
+        </insert>
+        <insert tableName="user_accounts">
+            <column name="user_account_id" valueNumeric="6"/>
+            <column name="account_number" value="48b4bac9-72b8-46bf-8d3b-63fa45391582"/>
+            <column name="account_balance" valueNumeric="201.00"/>
+            <column name="user_id" valueNumeric="3"/>
+        </insert>
+        <insert tableName="user_accounts">
+            <column name="user_account_id" valueNumeric="7"/>
+            <column name="account_number" value="23d5de4e-e9cd-4c87-aa4e-e58b5d97662c"/>
+            <column name="account_balance" valueNumeric="11111.00"/>
+            <column name="user_id" valueNumeric="3"/>
+        </insert>
+        <insert tableName="user_accounts">
+            <column name="user_account_id" valueNumeric="8"/>
+            <column name="account_number" value="791968d1-6dfa-4114-9987-c462ec6580cc"/>
+            <column name="account_balance" valueNumeric="1234.00"/>
+            <column name="user_id" valueNumeric="3"/>
+        </insert>
+        <insert tableName="user_accounts">
+            <column name="user_account_id" valueNumeric="9"/>
+            <column name="account_number" value="ad787770-c54c-45e3-8448-d6cc7d00c01e"/>
+            <column name="account_balance" valueNumeric="234900.00"/>
+            <column name="user_id" valueNumeric="3"/>
+        </insert>
+        <insert tableName="user_accounts">
+            <column name="user_account_id" valueNumeric="10"/>
+            <column name="account_number" value="e80171cd-2910-4475-ad1d-f890a3c46dc2"/>
+            <column name="account_balance" valueNumeric="1778.00"/>
+            <column name="user_id" valueNumeric="4"/>
+        </insert>
+        <insert tableName="user_accounts">
+            <column name="user_account_id" valueNumeric="11"/>
+            <column name="account_number" value="211e2467-e885-46ce-bfce-d00e86fbff8c"/>
+            <column name="account_balance" valueNumeric="200888.00"/>
+            <column name="user_id" valueNumeric="6"/>
+        </insert>
+        <insert tableName="user_accounts">
+            <column name="user_account_id" valueNumeric="12"/>
+            <column name="account_number" value="7711f79f-ad9d-44f0-89bf-60edb56ee47c"/>
+            <column name="account_balance" valueNumeric="1541.00"/>
+            <column name="user_id" valueNumeric="6"/>
+        </insert>
+        <insert tableName="user_accounts">
+            <column name="user_account_id" valueNumeric="13"/>
+            <column name="account_number" value="853f1aa4-5700-4856-90c6-7f719f5ce1e9"/>
+            <column name="account_balance" valueNumeric="42380.00"/>
+            <column name="user_id" valueNumeric="7"/>
+        </insert>
+        <insert tableName="user_accounts">
+            <column name="user_account_id" valueNumeric="14"/>
+            <column name="account_number" value="1488a739-511c-425d-b439-c224afb425cc"/>
+            <column name="account_balance" valueNumeric="124180.00"/>
+            <column name="user_id" valueNumeric="8"/>
+        </insert>
+        <insert tableName="user_accounts">
+            <column name="user_account_id" valueNumeric="15"/>
+            <column name="account_number" value="c7c69d2d-10a7-469e-9f53-1da026516f67"/>
+            <column name="account_balance" valueNumeric="12.00"/>
+            <column name="user_id" valueNumeric="8"/>
+        </insert>
+        <insert tableName="user_accounts">
+            <column name="user_account_id" valueNumeric="17"/>
+            <column name="account_number" value="a7167ce6-ed88-44d5-9f43-09ee3f00146d"/>
+            <column name="account_balance" valueNumeric="941.00"/>
+            <column name="user_id" valueNumeric="13"/>
+        </insert>
+        <insert tableName="user_accounts">
+            <column name="user_account_id" valueNumeric="19"/>
+            <column name="account_number" value="1707728c-e8c7-4e85-8271-c425a10a1d34"/>
+            <column name="account_balance" valueNumeric="141500.00"/>
+            <column name="user_id" valueNumeric="14"/>
+        </insert>
+        <insert tableName="user_accounts">
+            <column name="user_account_id" valueNumeric="20"/>
+            <column name="account_number" value="6197960b-5949-4fc8-b6dd-0ba3ae9fb540"/>
+            <column name="account_balance" valueNumeric="12999.00"/>
+            <column name="user_id" valueNumeric="15"/>
+        </insert>
+        <insert tableName="user_accounts">
+            <column name="user_account_id" valueNumeric="21"/>
+            <column name="account_number" value="dba5d09d-3d9f-48d5-a2a2-cdbf7b81e34a"/>
+            <column name="account_balance" valueNumeric="15803.00"/>
+            <column name="user_id" valueNumeric="16"/>
+        </insert>
+        <insert tableName="user_accounts">
+            <column name="user_account_id" valueNumeric="22"/>
+            <column name="account_number" value="28f793ae-de19-4bb4-a16c-6e0e3f149dfc"/>
+            <column name="account_balance" valueNumeric="2000770.00"/>
+            <column name="user_id" valueNumeric="17"/>
+        </insert>
+        <insert tableName="user_accounts">
+            <column name="user_account_id" valueNumeric="23"/>
+            <column name="account_number" value="1ad0e3d8-a9da-4f02-a0f3-04e330430974"/>
+            <column name="account_balance" valueNumeric="915002.00"/>
+            <column name="user_id" valueNumeric="18"/>
+        </insert>
+        <insert tableName="user_accounts">
+            <column name="user_account_id" valueNumeric="24"/>
+            <column name="account_number" value="787fbf91-17d1-4bd5-acaf-a51c3841591b"/>
+            <column name="account_balance" valueNumeric="75151.00"/>
+            <column name="user_id" valueNumeric="19"/>
+        </insert>
+        <insert tableName="user_accounts">
+            <column name="user_account_id" valueNumeric="25"/>
+            <column name="account_number" value="3486cc87-599f-4345-89f4-ff4e35c43fd0"/>
+            <column name="account_balance" valueNumeric="70001.00"/>
+            <column name="user_id" valueNumeric="19"/>
+        </insert>
+        <insert tableName="user_accounts">
+            <column name="user_account_id" valueNumeric="26"/>
+            <column name="account_number" value="2634fce5-1a8a-4ad6-bdfb-d4cc411feb2d"/>
+            <column name="account_balance" valueNumeric="77711.00"/>
+            <column name="user_id" valueNumeric="20"/>
+        </insert>
+        <insert tableName="user_accounts">
+            <column name="user_account_id" valueNumeric="27"/>
+            <column name="account_number" value="0d24132c-be2b-4abd-868a-19f4314413d9"/>
+            <column name="account_balance" valueNumeric="7048.00"/>
+            <column name="user_id" valueNumeric="22"/>
+        </insert>
+        <insert tableName="user_accounts">
+            <column name="user_account_id" valueNumeric="29"/>
+            <column name="account_number" value="4f723d57-7941-4322-a7c8-1a554ad0c45d"/>
+            <column name="account_balance" valueNumeric="240114.00"/>
+            <column name="user_id" valueNumeric="24"/>
+        </insert>
+        <insert tableName="user_accounts">
+            <column name="user_account_id" valueNumeric="31"/>
+            <column name="account_number" value="ae2f84d2-fb19-49f3-b521-407231592b04"/>
+            <column name="account_balance" valueNumeric="154008.00"/>
+            <column name="user_id" valueNumeric="25"/>
+        </insert>
+        <insert tableName="user_accounts">
+            <column name="user_account_id" valueNumeric="32"/>
+            <column name="account_number" value="e5e6006e-0015-4716-8de1-72a4d1012419"/>
+            <column name="account_balance" valueNumeric="899.00"/>
+            <column name="user_id" valueNumeric="27"/>
+        </insert>
+        <insert tableName="user_accounts">
+            <column name="user_account_id" valueNumeric="33"/>
+            <column name="account_number" value="c0c577e6-e1bc-4a7c-b60b-5cbf8ed1f704"/>
+            <column name="account_balance" valueNumeric="9222.00"/>
+            <column name="user_id" valueNumeric="28"/>
+        </insert>
+        <insert tableName="user_accounts">
+            <column name="user_account_id" valueNumeric="35"/>
+            <column name="account_number" value="aa613bbf-5942-48cc-93ac-2897298b51f5"/>
+            <column name="account_balance" valueNumeric="75.20"/>
+            <column name="user_id" valueNumeric="31"/>
+        </insert>
+        <insert tableName="user_accounts">
+            <column name="user_account_id" valueNumeric="36"/>
+            <column name="account_number" value="d6b4f17e-a69b-41c1-9fa2-c22083449d5d"/>
+            <column name="account_balance" valueNumeric="75083.15"/>
+            <column name="user_id" valueNumeric="32"/>
+        </insert>
+        <insert tableName="user_accounts">
+            <column name="user_account_id" valueNumeric="37"/>
+            <column name="account_number" value="c23d4161-771c-4510-8264-ce99c49f6b65"/>
+            <column name="account_balance" valueNumeric="145151.75"/>
+            <column name="user_id" valueNumeric="33"/>
+        </insert>
+        <insert tableName="user_accounts">
+            <column name="user_account_id" valueNumeric="39"/>
+            <column name="account_number" value="d73cb0b7-8029-4671-8ab5-39b29e368636"/>
+            <column name="account_balance" valueNumeric="141.10"/>
+            <column name="user_id" valueNumeric="34"/>
+        </insert>
+        <insert tableName="user_accounts">
+            <column name="user_account_id" valueNumeric="41"/>
+            <column name="account_number" value="8fe633fb-fca1-4eb8-8f9b-c7e245176e76"/>
+            <column name="account_balance" valueNumeric="1151541.10"/>
+            <column name="user_id" valueNumeric="35"/>
+        </insert>
+        <insert tableName="user_accounts">
+            <column name="user_account_id" valueNumeric="42"/>
+            <column name="account_number" value="88be1b47-f626-4ffb-840e-24f3660f3d9e"/>
+            <column name="account_balance" valueNumeric="56161.70"/>
+            <column name="user_id" valueNumeric="35"/>
+        </insert>
+        <insert tableName="user_accounts">
+            <column name="user_account_id" valueNumeric="43"/>
+            <column name="account_number" value="7a814917-0b49-4f4f-8498-20ce6d1584bd"/>
+            <column name="account_balance" valueNumeric="5616151.00"/>
+            <column name="user_id" valueNumeric="35"/>
+        </insert>
+        <insert tableName="user_accounts">
+            <column name="user_account_id" valueNumeric="44"/>
+            <column name="account_number" value="bc43fad5-eb2d-4639-a283-c8f03d478cc6"/>
+            <column name="account_balance" valueNumeric="16161.00"/>
+            <column name="user_id" valueNumeric="35"/>
+        </insert>
+    </changeSet>
+    <changeSet id="1740911468565-2" author="malibuchka">
+        <sql splitStatements="false" stripComments="true">
+            DO
+            $$
+        DECLARE
+            table_record RECORD;
+            sequence_name
+            TEXT;
+            BEGIN
+            FOR table_record IN (
+                SELECT
+                    c.relname AS table_name,
+                    a.attname AS column_name,
+                    pg_get_serial_sequence(n.nspname || '.' || c.relname, a.attname) AS seq_name
+                FROM
+                    pg_class c
+                    JOIN pg_namespace n ON n.oid = c.relnamespace
+                    JOIN pg_attribute a ON a.attrelid = c.oid
+                WHERE
+                    n.nspname = 'public'
+                    AND c.relkind = 'r'
+                    AND a.attnum > 0
+                    AND NOT a.attisdropped
+                    AND pg_get_serial_sequence(n.nspname || '.' || c.relname, a.attname) IS NOT NULL
+            ) LOOP
+                IF table_record.seq_name IS NOT NULL THEN
+                    sequence_name := table_record.seq_name;
+            EXECUTE format(
+                    'SELECT setval(%L, (SELECT COALESCE(MAX(%I), 1) FROM %I.%I))',
+                    sequence_name,
+                    table_record.column_name,
+                    'public',
+                    table_record.table_name
+                    );
+            RAISE
+            NOTICE 'Updated sequence % for table %.%', sequence_name, 'public', table_record.table_name;
+            ELSE
+                    RAISE NOTICE 'No sequence found for table %.%', 'public', table_record.table_name;
+            END IF;
+            END LOOP;
+            END $$;
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

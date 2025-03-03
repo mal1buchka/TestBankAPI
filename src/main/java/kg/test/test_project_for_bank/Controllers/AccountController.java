@@ -1,5 +1,9 @@
 package kg.test.test_project_for_bank.Controllers;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
 import kg.test.test_project_for_bank.DTOs.AccountDTO;
@@ -18,6 +22,7 @@ import java.util.List;
 @Validated
 @RestController
 @RequestMapping ("/api/v1/accounts")
+@Tag(name = "Account controller", description = "This controller manages actions with user accounts")
 public class AccountController {
     private final AccountService accountService;
     private final AccountMapper accountMapper;
@@ -28,6 +33,12 @@ public class AccountController {
         this.accountMapper = accountMapper;
     }
 
+    @Operation(summary = "Create Account for User", description = "Controller for creating an account for user")
+    @ApiResponses (value = {
+            @ApiResponse(responseCode = "201", description = "Account created successfully"),
+            @ApiResponse (responseCode = "400", description = "Invalid user id or request data"),
+            @ApiResponse(responseCode = "500", description = "Internal server error")
+    })
     @PostMapping ("/create-account/{userId}")
     public ResponseEntity<AccountCreateResponse> createAccount(@PathVariable @Min (value = 1, message = "User ID must be a positive number") Long userId) {
         Account createdAccount = accountService.createAccountForUser(userId);
@@ -39,6 +50,12 @@ public class AccountController {
         return ResponseEntity.status(201).body(response);
     }
 
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Deposited successfully"),
+            @ApiResponse(responseCode = "400", description = "Invalid request data"),
+            @ApiResponse(responseCode = "500", description = "Internal server error")
+    })
+    @Operation(summary = "Deposit Amount", description = "Controller for depositing some amount to the balance")
     @PatchMapping ("/{accountId}/deposit")
     public ResponseEntity<String> depositToBalance(@PathVariable @Min (value = 1, message = "Account ID must be a positive number")
                                                    Long accountId, @Valid @RequestBody DepositToBalanceOfAccountRequest request) {
@@ -46,6 +63,12 @@ public class AccountController {
         return ResponseEntity.status(200).body("Deposit operation done successfully");
     }
 
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Withdraw operation successfully"),
+            @ApiResponse(responseCode = "400", description = "Invalid user request data"),
+            @ApiResponse(responseCode = "500", description = "Internal server error")
+    })
+    @Operation(summary = "Withdraw Amount", description = "Controller for withdrawing some amount from the balance")
     @PatchMapping ("/{accountId}/withdraw")
     public ResponseEntity<String> withdrawFromBalance(@PathVariable @Min (value = 1, message = "Account ID must be a positive number")
                                                       Long accountId, @Valid @RequestBody WithdrawFromBalanceOfAccountRequest request) {
@@ -53,6 +76,12 @@ public class AccountController {
         return ResponseEntity.status(200).body("Withdraw operation done successfully");
     }
 
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Fetching operation successfully"),
+            @ApiResponse(responseCode = "400", description = "Invalid request data"),
+            @ApiResponse(responseCode = "500", description = "Internal server error")
+    })
+    @Operation(summary = "Get All Accounts of User", description = "Controller which takes from db all the related accounts to the user")
     @GetMapping ("/{userId}")
     public ResponseEntity<List<AccountDTO>> getAllAccountsForUser(@PathVariable @Min (value = 1, message = "Account ID must be a positive number") Long userId) {
         List<Account> accountList = accountService.getAccountsByUserId(userId);

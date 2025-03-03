@@ -1,6 +1,6 @@
 package kg.test.test_project_for_bank.Services.Impl;
 
-import kg.test.test_project_for_bank.DAOs.UserDAO;
+import kg.test.test_project_for_bank.Repositories.UserRepository;
 import kg.test.test_project_for_bank.Exceptions.UserExceptions.SuchUserNotFoundExeception;
 import kg.test.test_project_for_bank.Exceptions.UserExceptions.UserAlreadyExistExeception;
 import kg.test.test_project_for_bank.Models.User;
@@ -18,17 +18,18 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
 
-    private final UserDAO userDAO;
+    private final UserRepository userRepository;
 
-    public UserServiceImpl(UserDAO userDAO) {
-        this.userDAO = userDAO;
+    public UserServiceImpl(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
+
 
     @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.READ_COMMITTED)
     @Override
     public User createUser(CreateUserRequest request) {
-        log.info("Attempting to create user");
-        if(userDAO.existsByEmail(request.getEmail())){
+        log.debug("Attempting to create user with email: {}", request.getEmail());
+        if(userRepository.existsByEmail(request.getEmail())){
             log.warn("User with such email:{} already exists", request.getEmail());
             throw new UserAlreadyExistExeception("User with such email already exists, please login by your email");
         }
@@ -36,21 +37,30 @@ public class UserServiceImpl implements UserService {
                 .name(request.getName())
                 .email(request.getEmail())
                 .build();
-        log.info("User has been created and saved with email: {}", newUser.getEmail());
-        return userDAO.save(newUser);
+        log.info("User created successfully with email={}", newUser.getEmail());
+        return userRepository.save(newUser);
     }
+
     @Transactional(readOnly = true, isolation = Isolation.READ_COMMITTED)
     @Override
     public User getUserById(Long userId) {
-        log.info("Attempting to get user by id: {}", userId);
-        User user = userDAO.findById(userId).orElseThrow(
-                () -> new SuchUserNotFoundExeception("Such user not found"));
-        log.info("Successfully took user: id {}", userId);
-        return user;
+        log.debug("Fetching user by ID: {}", userId);
+        return userRepository.findById(userId)
+                .orElseThrow(() ->
+                    new SuchUserNotFoundExeception("User not found with ID: " + userId)
+                );
     }
+
+
     @Transactional(readOnly = true, isolation = Isolation.READ_COMMITTED)
     @Override
     public List<User> getAllUsers() {
-        return userDAO.findAll();
+        log.debug("Fetching all users");
+        List<User> users = userRepository.findAll();
+        if (users.isEmpty()) {
+            log.warn("No users found in the database");
+        }
+        log.info("Fetching all users from db completed, the size of users: {}", users.size());
+        return users;
     }
 }

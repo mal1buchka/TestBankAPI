@@ -1,4 +1,21 @@
 services:
+  api:
+    image: 'bank_back:latest'
+    build:
+      context: .
+    container_name: bank_app
+    depends_on:
+      - test-bank-db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://test-bank-db:5432/${DB_NAME}
+      - SPRING_DATASOURCE_USERNAME=${DB_USER}
+      - SPRING_DATASOURCE_PASSWORD=${DB_PASSWORD}
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=validate
+    ports:
+      - "8080:8080"
+    networks:
+      - bank-overall
+
   test-bank-db:
     image: postgres:15-alpine
     container_name: postgres-db

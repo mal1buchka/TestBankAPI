@@ -1,7 +1,7 @@
 package kg.test.test_project_for_bank.Services.Impl;
 
 
-import kg.test.test_project_for_bank.DAOs.AccountDAO;
+import kg.test.test_project_for_bank.Repositories.AccountRepository;
 import kg.test.test_project_for_bank.Exceptions.AccountExceptions.IllegalAccountOperationException;
 import kg.test.test_project_for_bank.Exceptions.AccountExceptions.SuchAcccountForUserNotFoundException;
 import kg.test.test_project_for_bank.Models.Account;
@@ -25,17 +25,18 @@ import java.util.UUID;
 public class AccountServiceImpl implements AccountService {
 
 
-    private final AccountDAO accountDAO;
+    private final AccountRepository accountRepository;
     private final UserService userService;
 
-    public AccountServiceImpl(AccountDAO accountDAO, UserService userService) {
-        this.accountDAO = accountDAO;
+    public AccountServiceImpl(AccountRepository accountRepository, UserService userService) {
+        this.accountRepository = accountRepository;
         this.userService = userService;
     }
 
-    @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.READ_COMMITTED)
+    @Transactional (propagation = Propagation.REQUIRES_NEW, isolation = Isolation.READ_COMMITTED)
     @Override
     public Account createAccountForUser(Long userId) {
+        log.debug("Creating account for user {}", userId);
 
         User user = userService.getUserById(userId);
         String accountNumber = UUID.randomUUID().toString();
@@ -43,48 +44,73 @@ public class AccountServiceImpl implements AccountService {
                 .accountNumber(accountNumber)
                 .balance(BigDecimal.ZERO)
                 .user(user).build();
-        return accountDAO.save(account);
+        log.info("Created account successfully  for userId: {} and accountNumber: {}",  userId, accountNumber);
+        return accountRepository.save(account);
     }
 
-    @Transactional(isolation = Isolation.SERIALIZABLE)
+    @Transactional (isolation = Isolation.READ_COMMITTED)
     @Override
     public void depositToBalance(Long accountId, DepositToBalanceOfAccountRequest request) {
-        if(request.getDepositAmount().compareTo(BigDecimal.ZERO) <= 0) {
+        log.debug("Depositing to balance for account {} and amount is: {}", accountId, request.getDepositAmount());
+
+        Account account = getAccountById(accountId);
+        BigDecimal oldBalance = account.getBalance();
+
+        if (request.getDepositAmount().compareTo(BigDecimal.ZERO) <= 0) {
             throw new IllegalArgumentException("Deposit amount has to be only positive");
         }
-        Account account = getAccountById(accountId);
-        account.setBalance(account.getBalance().add(request.getDepositAmount()));
-        log.info("Deposited {} to account {} successfully", request.getDepositAmount(), accountId);
+
+        //тут не стал добавлять ограничение на максимально возможное пополнение, надо ли, у меня 15 знаков, из них 13 целых, 2 дроби
+        accountRepository.depositToBalance(accountId, request.getDepositAmount());
+        BigDecimal newBalance = oldBalance.add(request.getDepositAmount());
+        log.info("Deposited {} kgs to accountId {} successfully. Old balance: {}. New Balance: {}", request.getDepositAmount(), accountId, oldBalance, newBalance);
     }
 
-    @Transactional(isolation = Isolation.SERIALIZABLE)
+    @Transactional (isolation = Isolation.READ_COMMITTED)
     @Override
     public void withdrawFromBalance(Long accountId, WithdrawFromBalanceOfAccountRequest request) {
-        if(request.getWithdrawalAmount().compareTo(BigDecimal.ZERO) <= 0) {
+        log.debug("Starting withdraw operation from accountId: {} with amount: {}", accountId, request.getWithdrawalAmount());
+
+        Account account = getAccountById(accountId);
+        BigDecimal oldBalance = account.getBalance();
+
+        if (request.getWithdrawalAmount().compareTo(BigDecimal.ZERO) <= 0) {
+            log.warn("UserId: {} tried to withdraw negative amount: {}", accountId, request.getWithdrawalAmount());
             throw new IllegalArgumentException("Withdrawal amount has to be only positive");
         }
-        Account account = getAccountById(accountId);
+
         if (account.getBalance().compareTo(request.getWithdrawalAmount()) < 0) {
+            log.error("Not enough balance for withdrawal. Account ID: {}, Current Balance: {}, Requested Withdrawal: {}",
+                    accountId, account.getBalance(), request.getWithdrawalAmount());
+            //экранирование и <br> в postman сериализуется как текст
             throw new IllegalAccountOperationException(
-                    String.format("Not enougth balance to withdraw from account %s \n Current balance: %s \n Requested withdraw: %s", accountId, account.getBalance(), request.getWithdrawalAmount())
+                    String.format("Not enougth balance to withdraw from account %s Current balance: %s Requested withdrawal: %s",
+                            accountId, account.getBalance(), request.getWithdrawalAmount())
             );
         }
-        account.setBalance(account.getBalance().subtract(request.getWithdrawalAmount()));
-        log.info("Withdraw operation successfully done from account: {}, and withdraw amount: {}", accountId, request.getWithdrawalAmount());
+
+        accountRepository.withdrawFromBalance(accountId, request.getWithdrawalAmount());
+        BigDecimal newBalance = oldBalance.subtract(request.getWithdrawalAmount());
+        log.info("Withdraw operation successfully done. Account id: {}, Withdraw Amount: {}, Old Balance: {}, New Balance: {}",
+                accountId, request.getWithdrawalAmount(), oldBalance, newBalance);
     }
 
-    private Account getAccountById(Long accountId){
-        return accountDAO.findById(accountId).orElseThrow(
-                () -> new SuchAcccountForUserNotFoundException("Such Account Not Found in system with id " + accountId)
-        );
+    private Account getAccountById(Long accountId) {
+        log.debug("Trying to get account: id={}", accountId);
+        return accountRepository.findById(accountId).orElseThrow(() -> {
+            log.error("Account not found: id={}", accountId);
+            return new SuchAcccountForUserNotFoundException("Account not found");
+        });
     }
 
-    @Transactional(readOnly = true, isolation = Isolation.READ_COMMITTED)
+    @Transactional (readOnly = true, isolation = Isolation.READ_COMMITTED)
     @Override
     public List<Account> getAccountsByUserId(Long userId) {
-        if(userId == null || userId <= 0 || userId.describeConstable().isEmpty()) {
-            throw new IllegalArgumentException("UserId has to be greater than 0");
+        log.debug("Trying to get accounts for user: id={}", userId);
+        if (userId == null || userId <= 0) {
+            log.warn("Invalid user ID: {}", userId);
+            throw new IllegalArgumentException("User ID must be positive");
         }
-        return accountDAO.getAccountsByUserId(userId);
+        return accountRepository.getAccountsByUserId(userId);
     }
 }

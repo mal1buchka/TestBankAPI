@@ -16,7 +16,7 @@ public class AccountExceptionHandler extends BaseExceptionHandler{
     }
     @ExceptionHandler(SuchAcccountForUserNotFoundException.class)
     ResponseEntity<DetailedError> handleSuchAcccountForUserNotFoundException(SuchAcccountForUserNotFoundException e, HttpServletRequest request) {
-        return buildErrorResponse(e, request, HttpStatus.BAD_REQUEST, "ACCOUNT_NOT_FOUND");
+        return buildErrorResponse(e, request, HttpStatus.NOT_FOUND, "ACCOUNT_NOT_FOUND");
     }
     @ExceptionHandler(IllegalArgumentException.class)
     ResponseEntity<DetailedError> handleIllegalArgumentException(IllegalArgumentException e, HttpServletRequest request) {

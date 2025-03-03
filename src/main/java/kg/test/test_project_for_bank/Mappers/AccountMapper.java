@@ -5,7 +5,6 @@ import kg.test.test_project_for_bank.Models.Account;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Map;
 
 @Component
 public class AccountMapper {

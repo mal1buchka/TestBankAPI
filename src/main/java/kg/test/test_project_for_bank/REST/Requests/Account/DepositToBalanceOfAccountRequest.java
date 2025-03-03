@@ -13,7 +13,7 @@ import java.math.RoundingMode;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DepositToBalanceOfAccountRequest {
-    @NotNull
+    @NotNull(message = "Deposit amount cannot be null")
     @Positive(message = "Deposited amount cannto be negative or zero, only positive")
     private BigDecimal depositAmount;
 
