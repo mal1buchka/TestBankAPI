@@ -1,11 +1,14 @@
+version: "3.8"
+
 services:
   api:
-    image: 'bank_back:latest'
     build:
       context: .
+      dockerfile: Dockerfile
     container_name: bank_app
     depends_on:
-      - test-bank-db
+      test-bank-db:
+        condition: service_healthy
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://test-bank-db:5432/${DB_NAME}
       - SPRING_DATASOURCE_USERNAME=${DB_USER}
@@ -29,8 +32,15 @@ services:
       - bank-overall
     volumes:
       - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "${DB_USER}", "-d", "${DB_NAME}"]
+      interval: 5s
+      retries: 5
+      start_period: 10s
+
 volumes:
-    db-data:
+  db-data:
+
 networks:
   bank-overall:
     driver: bridge
